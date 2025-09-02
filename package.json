@@ -1,0 +1,32 @@
+{
+  "name": "assets",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/marijuana-mn/assets#readme",
+  "bugs": {
+    "url": "https://github.com/marijuana-mn/assets/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marijuana-mn/assets.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Scott Ballantyne",
+  "type": "commonjs",
+  "main": "index.js",
+  "bin": {
+    "assets": "bin/assets.js"
+  },
+  "scripts": {
+    "test": "mocha -w"
+  },
+  "dependencies": {
+    "carrier-pigeon": "^0.1.11"
+  },
+  "devDependencies": {
+    "gulp": "^5.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^3.0.0",
+    "gulp-uglify": "^3.0.2"
+  }
+}

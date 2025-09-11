@@ -18,6 +18,7 @@
     "assets": "bin/assets.js"
   },
   "scripts": {
+    "gulp": "./node_modules/.bin/gulp",
     "test": "mocha -w"
   },
   "dependencies": {

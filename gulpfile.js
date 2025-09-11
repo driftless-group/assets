@@ -14,6 +14,7 @@ gulp.task('scripts', function() {
   return gulp.src([
     './dependencies/handlebars.js',
     './dependencies/jquery.js',
+    './dependencies/socket.io.js',
     './dependencies/underscore.js',
     './dependencies/backbone.js',
     './dependencies/bootstrap.js',

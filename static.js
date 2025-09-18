@@ -10,7 +10,7 @@ let finder = require(path.join(__dirname, 'finder'));
 module.exports = function(options={}) {
  
   if (options.cache == undefined) {
-    options.cache = process.env.NODE_ENV == 'production';
+    options.cache = false;
   }
 
   if (options.default == undefined) {
@@ -29,8 +29,6 @@ module.exports = function(options={}) {
       return next();
     }
 
-    //console.log(req.headers);
-
     var files = finder(options.path, req.url), file;
     
     if (files.length > 0) {
@@ -47,9 +45,9 @@ module.exports = function(options={}) {
         res.set('Etag', etag);
         
         if (req.headers['if-none-match'] == etag) {
-          res.status(304);
-          res.end();
+          res.status(304).end();
         } else {
+
           if (options.cache) {
             res.set('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
           }

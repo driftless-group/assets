@@ -11,12 +11,20 @@ module.exports = function(name, options={}) {
     options.cwd = process.cwd();
   }
 
+  if (options.full_name == undefined) {
+    options.full_name = false
+  }
 
   var directory = path.join(options.cwd, name);
   var files      = fs.readdirSync(directory);
 
   var files = files.reduce((obj, filename) => {
-    var name     = filename.split('.').shift();
+    var name;
+    if (options.full_name == false) {
+      name = filename.split('.').shift();
+    } else {
+      name = filename;
+    }
     var contents = fs.readFileSync(path.join(directory, filename)).toString();
     
     if (options.json == false) {

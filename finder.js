@@ -1,5 +1,5 @@
 const path = require('fs');
-const fs = require('fs');
+const fs   = require('fs');
 
 function finder(directories, file) {
   return JSON.parse(JSON.stringify(directories)).reduce((found, directory) => {

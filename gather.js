@@ -34,6 +34,8 @@ module.exports = function(name, options={}) {
         obj[name] = JSON.parse(contents);
       } catch(error) {
         console.log(error);
+        console.log(name);
+        console.log(contents);
       }
     }
 

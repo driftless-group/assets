@@ -18,7 +18,7 @@ module.exports = function(options={}) {
   if (options.path == undefined) {
     options.path = [];
     if (fs.existsSync(defaultPath) && options.default) {
-      options.path.push(path.join(process.cwd(), 'public'))
+      options.path.push(defaultPath);
     }
   }
 

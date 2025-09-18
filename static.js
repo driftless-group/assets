@@ -8,6 +8,10 @@ let finder = require(path.join(__dirname, 'finder'));
 
 module.exports = function(options={}) {
  
+  if (options.cache == undefined) {
+    options.cache = process.env.NODE_ENV == 'production';
+  }
+
   if (options.default == undefined) {
     options.default = true;
   }
@@ -29,6 +33,12 @@ module.exports = function(options={}) {
     // maybe I should cache things in production?
 
     if (file != undefined) {
+      if (options.cache == false) {
+        res.set('Cache-Control', 'no-cache');
+      } else {
+        res.set('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
+      }
+
       const readStream = fs.createReadStream(file.path);
       readStream.pipe(res);
     } else {

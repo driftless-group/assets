@@ -29,6 +29,8 @@ module.exports = function(options={}) {
       return next();
     }
 
+    //console.log(req.headers);
+
     var files = finder(options.path, req.url), file;
     
     if (files.length > 0) {
@@ -45,11 +47,10 @@ module.exports = function(options={}) {
         res.set('Etag', etag);
         
         if (req.headers['if-none-match'] == etag) {
-          res.status(304).end();
+          res.status(304);
+          res.end();
         } else {
-          if (options.cache == false) {
-            res.set('Cache-Control', 'no-cache');
-          } else {
+          if (options.cache) {
             res.set('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
           }
 

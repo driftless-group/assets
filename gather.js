@@ -7,7 +7,12 @@ module.exports = function(name, options={}) {
     options.json = false;
   }
 
-  var directory = path.join(__dirname, name);
+  if (options.cwd == undefined) {
+    options.cwd = process.cwd();
+  }
+
+
+  var directory = path.join(options.cwd, name);
   var files      = fs.readdirSync(directory);
 
   var files = files.reduce((obj, filename) => {

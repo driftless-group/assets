@@ -32,9 +32,7 @@ module.exports = function(options={}) {
     
     if (files.length > 0) {
       file = {host: req.host, url: req.url, path: files[0]}
-    }
-
-    if (file == undefined) {
+    } else {
       return next();
     }
 

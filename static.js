@@ -1,5 +1,6 @@
 const path = require('path');
 const fs   = require('fs');
+const crypto = require('crypto');
 
 const defaultPath = path.join(process.cwd(), 'public')
 
@@ -24,6 +25,10 @@ module.exports = function(options={}) {
   }
 
   return function(req, res, next) {
+    if (req.url == '/') {
+      return next();
+    }
+
     var files = finder(options.path, req.url), file;
     
     if (files.length > 0) {
@@ -33,14 +38,26 @@ module.exports = function(options={}) {
     // maybe I should cache things in production?
 
     if (file != undefined) {
-      if (options.cache == false) {
-        res.set('Cache-Control', 'no-cache');
-      } else {
-        res.set('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
-      }
+      fs.stat(file.path, function(err, stat) {
+        
+        file.modified = stat.mtimeMs
+        var etag = crypto.createHash('md5').update(JSON.stringify(file)).digest('hex');
+        res.set('Etag', etag);
+        
+        if (req.headers['if-none-match'] == etag) {
+          res.status(304).end();
+        } else {
+          if (options.cache == false) {
+            res.set('Cache-Control', 'no-cache');
+          } else {
+            res.set('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
+          }
 
-      const readStream = fs.createReadStream(file.path);
-      readStream.pipe(res);
+          const readStream = fs.createReadStream(file.path);
+          readStream.pipe(res);
+        }
+      }); 
+
     } else {
       next();
     }

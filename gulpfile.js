@@ -5,7 +5,7 @@ const { series, parallel } = require('gulp');
 var concat = require('gulp-concat');
 
 gulp.task('copy', function() {
-  return gulp.src(['./dependencies/*'])
+  return gulp.src(['./dependencies/*', './helpers.js'])
     .pipe(gulp.dest('./public/'));
 
 })
@@ -18,8 +18,8 @@ gulp.task('scripts', function() {
     './dependencies/underscore.js',
     './dependencies/backbone.js',
     './dependencies/bootstrap.js',
-    './dependencies/openpgp.js'
-
+    './dependencies/openpgp.js',
+    './helpers.js'
   ])
     .pipe(concat('dependencies.js'))
     .pipe(gulp.dest('./public/'));

@@ -16,9 +16,19 @@ module.exports = function(options={}) {
   }
 
   return function(req, res, next) {
-    var files = finder(options.paths, req.url)
-    console.log(files);
-    next();
+    var files = finder(options.paths, req.url), file;
+    if (files.length > 0) {
+      file = {host: req.host, url: req.url, path: files[0]}
+    }
+
+    // maybe I should cache things in production?
+
+    if (file != undefined) {
+      const readStream = fs.createReadStream(file.path);
+      readStream.pipe(res);
+    } else {
+      next();
+    }
   }
 
 }

@@ -40,7 +40,7 @@ module.exports = function(options={}) {
       file.modified = stat.mtimeMs
       var etag = crypto.createHash('md5').update(JSON.stringify(file)).digest('hex');
       res.set('Etag', etag);
-
+      
       if (req.headers['if-none-match'] == etag) {
         res.status(304).end();
       } else {

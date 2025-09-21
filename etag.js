@@ -1,7 +1,10 @@
 const crypto = require('crypto');
 
 function check(details={}) {
-  var etag = crypto.createHash('md5').update(JSON.stringify(details)).digest('hex');
+  if (typeof details != 'string') {
+    details = JSON.stringify(details);
+  }
+  var etag = crypto.createHash('md5').update(details).digest('hex');
  
   return function(req, res, next) {
     res.set('Etag', etag);

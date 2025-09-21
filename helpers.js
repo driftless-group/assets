@@ -1,5 +1,14 @@
 
-var helpers = {};
+if (typeof process === 'object') {
+  var path = require('path');
+  var helpers = require(path.join(__dirname, 'node_modules', 'assets', 'public', 'helpers'));
+  var Handlebars = require('handlebars');
+}
+
+if (helpers == undefined) { 
+  var helpers = {};
+}
+
 
 
 helpers.a = function() {

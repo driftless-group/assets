@@ -48,6 +48,12 @@ module.exports = function(options={}) {
           res.set('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
         }
 
+        if (file.path.indexIf('.json') > -1) { 
+          res.setHeader('Content-Type', 'application/json');
+        } else if (file.path.indexOf('.js') > -1)
+          res.setHeader('Content-Type', 'application/javascript');
+        }
+
         const readStream = fs.createReadStream(file.path);
         readStream.pipe(res);
       }

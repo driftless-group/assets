@@ -16,7 +16,11 @@ module.exports = function(name, options={}) {
   }
 
   var directory = path.join(options.cwd, name);
-  var files      = fs.readdirSync(directory);
+  var files = [];      
+
+  if (fs.existsSync(directory)) {
+    files = fs.readdirSync(directory);
+  }
 
   var files = files.reduce((obj, filename) => {
     var name;

@@ -25,6 +25,7 @@
     "carrier-pigeon": "^0.1.11"
   },
   "devDependencies": {
-    "gulp": "^5.0.1"
+    "gulp": "^5.0.1",
+    "gulp-concat": "^2.6.1"
   }
 }

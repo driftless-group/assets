@@ -84,7 +84,7 @@ helpers.style = function() {
 
 
 
-if (module != undefined) {
+if (typeof module != 'undefined') {
   module.exports = helpers;
 }
 

@@ -22,7 +22,8 @@
     "test": "mocha -w"
   },
   "dependencies": {
-    "carrier-pigeon": "^0.1.11"
+    "carrier-pigeon": "^0.1.11",
+    "qrcode": "^1.5.4"
   },
   "devDependencies": {
     "gulp": "^5.0.1",

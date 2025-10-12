@@ -10,6 +10,12 @@ gulp.task('copy', function() {
 
 })
 
+gulp.task('mocha', function() {
+  return gulp.src(['./node_modules/mocha/mocha.js', './node_modules/mocha/mocha.css'])
+    .pipe(gulp.dest('./public/'));
+
+})
+
 gulp.task('scripts', function() {
   return gulp.src([
     './dependencies/handlebars.js',
@@ -27,7 +33,7 @@ gulp.task('scripts', function() {
 });
 
 
-gulp.task('default', parallel("copy", "scripts"));
+gulp.task('default', parallel("copy", "mocha", "scripts"));
 
 
 

@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "gulp": "^5.0.1",
-    "gulp-concat": "^2.6.1"
+    "gulp-concat": "^2.6.1",
+    "mocha": "^11.7.4"
   }
 }

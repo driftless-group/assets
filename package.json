@@ -1,14 +1,14 @@
 {
-  "name": "assets",
+  "name": "@driftless-group/assets",
   "version": "0.0.1",
   "description": "",
-  "homepage": "https://github.com/marijuana-mn/assets#readme",
+  "homepage": "https://github.com/driftless-group/assets#readme",
   "bugs": {
-    "url": "https://github.com/marijuana-mn/assets/issues"
+    "url": "https://github.com/driftless-group/assets/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marijuana-mn/assets.git"
+    "url": "git+https://github.com/driftless-group/assets.git"
   },
   "license": "UNLICENSED",
   "author": "Scott Ballantyne",

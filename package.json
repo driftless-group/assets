@@ -1,14 +1,10 @@
 {
   "name": "@driftless-group/assets",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "homepage": "https://github.com/driftless-group/assets#readme",
   "bugs": {
     "url": "https://github.com/driftless-group/assets/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/driftless-group/assets.git"
   },
   "license": "UNLICENSED",
   "author": "Scott Ballantyne",

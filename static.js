@@ -36,13 +36,15 @@ module.exports = function(options={}) {
       return next();
     }
 
+    //console.log('static', file.path);
+
     if (file.path.indexOf('.json') > -1) { 
       res.setHeader('Content-Type', 'application/json');
     } else if (file.path.indexOf('.js') > -1) {
       res.setHeader('Content-Type', 'application/javascript');
     } else if (file.path.indexOf('.css') > -1) {
       res.setHeader('Content-Type', 'text/css');
-    }
+    }   
     
     fs.stat(file.path, function(err, stat) {
       file.modified = stat.mtimeMs
@@ -55,7 +57,6 @@ module.exports = function(options={}) {
         if (options.cache) {
           res.set('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
         }
-
 
         const readStream = fs.createReadStream(file.path);
         readStream.pipe(res);

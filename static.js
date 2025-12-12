@@ -36,6 +36,14 @@ module.exports = function(options={}) {
       return next();
     }
 
+    if (file.path.indexOf('.json') > -1) { 
+      res.setHeader('Content-Type', 'application/json');
+    } else if (file.path.indexOf('.js') > -1) {
+      res.setHeader('Content-Type', 'application/javascript');
+    } else if (file.path.indexOf('.css') > -1) {
+      res.setHeader('Content-Type', 'text/css');
+    }
+    
     fs.stat(file.path, function(err, stat) {
       file.modified = stat.mtimeMs
       var etag = crypto.createHash('md5').update(JSON.stringify(file)).digest('hex');
@@ -48,11 +56,6 @@ module.exports = function(options={}) {
           res.set('Cache-Control', 'public, max-age=31536000'); // Cache for 1 year
         }
 
-        if (file.path.indexOf('.json') > -1) { 
-          res.setHeader('Content-Type', 'application/json');
-        } else if (file.path.indexOf('.js') > -1) {
-          res.setHeader('Content-Type', 'application/javascript');
-        }
 
         const readStream = fs.createReadStream(file.path);
         readStream.pipe(res);

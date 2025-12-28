@@ -26,6 +26,7 @@ gulp.task('scripts', function() {
     './dependencies/bootstrap.js',
     './dependencies/openpgp.js',
     './dependencies/qrcode.js',
+    './dependencies/utilities.js',
     './helpers.js'
   ])
     .pipe(concat('dependencies.js'))

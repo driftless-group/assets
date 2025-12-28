@@ -62439,6 +62439,25 @@ var QRCode;
 	QRCode.CorrectLevel = QRErrorCorrectLevel;
 })();
 
+var unavailableMapLibreLanguages = [
+  "so"
+];
+
+
+function setMapLanguage(languageCode) {
+  if (unavailableMapLibreLanguagues.indexOf(languageCode) > -1) {
+    languageCode = 'en';
+  }
+
+  map.setLayoutProperty('label_country', 'text-field', [
+    'get', `name:${languageCode}`
+  ]);
+  
+  map.setLayoutProperty('label_city', 'text-field', [
+    'get', `name:${languageCode}`
+  ]);
+}
+
 
 if (typeof process === 'object') {
   var path = require('path');
@@ -62449,6 +62468,17 @@ if (helpers == undefined) {
   var helpers = {};
 }
 
+// this is just an initial stab at it.  i think it might need to render handlebars etc.
+helpers.t = function(name, data={}, options={}) {
+  var string = '';
+  
+  //console.log(this.translations);
+  //console.log(this.locale);
+  
+  string = this.translations[this.locale][name]
+
+  return string;
+}
 
 
 helpers.a = function() {

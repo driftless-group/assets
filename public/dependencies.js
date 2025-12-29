@@ -62440,12 +62440,12 @@ var QRCode;
 })();
 
 var unavailableMapLibreLanguages = [
-  "so"
+  "so", "hmn"
 ];
 
 
 function setMapLanguage(languageCode) {
-  if (unavailableMapLibreLanguagues.indexOf(languageCode) > -1) {
+  if (unavailableMapLibreLanguages.indexOf(languageCode) > -1) {
     languageCode = 'en';
   }
 

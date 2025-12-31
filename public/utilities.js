@@ -1,6 +1,9 @@
-var unavailableMapLibreLanguages = [
-  "so", "hmn"
-];
+
+if (unavailableMapLibreLanguages == undefined) { 
+  var unavailableMapLibreLanguages = [
+    "so", "hmn"
+  ];
+}
 
 
 function setMapLanguage(languageCode) {

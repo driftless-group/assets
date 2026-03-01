@@ -90,6 +90,15 @@ helpers.style = function() {
 }
 
 
+helpers.html = function() {
+  return Handlebars.escapeExpression([
+    '<html lang="', 
+    this.locale ,'"', 
+    (this.dir == "rtl" ? ' dir="rtl"' : ""),
+    ' >'
+  ].join(''))
+}
+
 
 
 

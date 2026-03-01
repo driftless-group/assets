@@ -91,7 +91,7 @@ helpers.style = function() {
 
 
 helpers.html = function() {
-  return Handlebars.escapeExpression([
+  return new Handlebars.SafeString(([
     '<html lang="', 
     this.locale ,'"', 
     (this.dir == "rtl" ? ' dir="rtl"' : ""),

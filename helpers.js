@@ -91,7 +91,7 @@ helpers.style = function() {
 
 
 helpers.html = function() {
-  return new Handlebars.SafeString(([
+  return new Handlebars.SafeString([
     '<html lang="', 
     this.locale ,'"', 
     (this.dir == "rtl" ? ' dir="rtl"' : ""),

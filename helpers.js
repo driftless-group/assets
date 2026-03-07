@@ -63,14 +63,8 @@ helpers.script = function() {
     return typeof item == 'string';
   })
 
-  var host = "";
-
-  if (['production', 'next'].indexOf(this.ENV) > -1) {
-    host = [this.urls.proto, '://', this.urls.identity].join('')
-  }
-
   var scripts = args.reduce((stack, url) => {
-    stack.push('<script src="'+host+Handlebars.escapeExpression(url)+'"></script>');
+    stack.push('<script src="'+Handlebars.escapeExpression(url)+'"></script>');
 
     return stack;
   }, []).join('\n');

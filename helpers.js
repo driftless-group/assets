@@ -65,7 +65,7 @@ helpers.script = function() {
 
   var host = "";
 
-  if (['production', 'next'].indexOf(self.ENV) > -1) {
+  if (['production', 'next'].indexOf(this.ENV) > -1) {
     host = [this.urls.proto, '://', this.urls.identity].join('')
   }
 

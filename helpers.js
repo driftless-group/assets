@@ -66,7 +66,7 @@ helpers.script = function() {
   var host = "";
 
   if (['production', 'next'].indexOf(self.ENV) > -1) {
-    host = ["https://",self.urls.identity].join('')
+    host = [this.urls.proto, '://', this.urls.identity].join('')
   }
 
   var scripts = args.reduce((stack, url) => {

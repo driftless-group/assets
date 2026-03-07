@@ -62,9 +62,15 @@ helpers.script = function() {
   }).filter((item) => {
     return typeof item == 'string';
   })
-  
+
+  var host = "";
+
+  if (['production', 'next'].indexOf(self.ENV) > -1) {
+    host = ["https://",self.urls.identity].join('')
+  }
+
   var scripts = args.reduce((stack, url) => {
-    stack.push('<script src="'+Handlebars.escapeExpression(url)+'"></script>');
+    stack.push('<script src="'+host+Handlebars.escapeExpression(url)+'"></script>');
 
     return stack;
   }, []).join('\n');

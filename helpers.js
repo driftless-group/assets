@@ -100,6 +100,14 @@ helpers.html = function() {
 }
 
 
+helpers.json = function(obj) {
+   return new Handlebars.SafeString([
+     '"',
+     JSON.stringify(obj),
+     '"'
+   ].join(''))
+ 
+}
 
 
 

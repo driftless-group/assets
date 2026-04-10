@@ -101,9 +101,8 @@ helpers.html = function() {
 
 
 helpers.json = function(obj) {
-  return JSON.stringify(obj);
+  return new Handlebars.SafeString(JSON.stringify(obj));
 }
-
 
 
 

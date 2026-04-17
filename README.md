@@ -1,3 +1,9 @@
 # assets
 
-I go and find and configure these things for every project.  Thought I would try to gather something very specific that works ok.  Had something else before but it was very involved.
+---
+
+Compilation of javascript and css.  There is also some code.  Other modules depend on this.
+
+```bash
+   npm install @drifted/assets --save
+```

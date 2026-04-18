@@ -1,12 +1,12 @@
 {
   "name": "@drifted/assets",
-  "version": "0.0.55",
+  "version": "0.0.60",
   "description": "",
   "homepage": "https://github.com/driftless-group/assets#readme",
   "bugs": {
     "url": "https://github.com/driftless-group/assets/issues"
   },
-  "license": "UNLICENSED",
+  "license": "GPL-3.0",
   "author": "Scott Ballantyne",
   "type": "commonjs",
   "main": "index.js",

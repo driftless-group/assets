@@ -1,7 +1,7 @@
 {
   "name": "@drifted/assets",
-  "version": "0.0.60",
-  "description": "",
+  "version": "0.0.61",
+  "description": "collection of javascript and css assets that I use on most projects and a way to package them together.",
   "homepage": "https://github.com/driftless-group/assets#readme",
   "bugs": {
     "url": "https://github.com/driftless-group/assets/issues"

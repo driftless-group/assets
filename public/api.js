@@ -1,4 +1,3 @@
-
 class API {
   constructor(options={}) {
     Object.assign(this, options);
@@ -22,7 +21,7 @@ class API {
     return new Promise(async(resolve) => {
       try {
         query = new URLSearchParams(query);
-        var url = [self.root, endpoint].join('') + "?" + query.toString()
+        var url = [self.interface, endpoint].join('') + "?" + query.toString()
 
         const response = await fetch(url, {
           method: 'GET',
@@ -46,7 +45,7 @@ class API {
 
   post(endpoint, data={}) {
     var reply, self = this;
-    var url = [self.root, endpoint].join('')
+    var url = [self.interface, endpoint].join('')
 
     return new Promise(async(resolve) => {
       const response = await fetch(url, {
@@ -68,7 +67,7 @@ class API {
     var self = this;
     
     return new Promise(async(resolve) => {
-      const url = [self.root, endpoint].join('');
+      const url = [self.interface, endpoint].join('');
 
       try {
         const response = await fetch(url, {
@@ -96,7 +95,7 @@ class API {
     var self = this, data;
 
     return new Promise(async(resolve) => {
-      var url = [self.root, endpoint].join('');
+      var url = [self.interface, endpoint].join('');
 
       const response = await fetch(url, {
         method: 'DELETE',
@@ -111,3 +110,6 @@ class API {
     })
   }
 }
+
+
+

@@ -62,7 +62,7 @@ helpers.script = function() {
   }).filter((item) => {
     return typeof item == 'string';
   })
-  
+
   var scripts = args.reduce((stack, url) => {
     stack.push('<script src="'+Handlebars.escapeExpression(url)+'"></script>');
 
@@ -90,8 +90,19 @@ helpers.style = function() {
 }
 
 
+helpers.html = function() {
+  return new Handlebars.SafeString([
+    '<html lang="', 
+    this.locale ,'"', 
+    (this.dir == "rtl" ? ' dir="rtl"' : ""),
+    ' >'
+  ].join(''))
+}
 
 
+helpers.json = function(obj) {
+  return new Handlebars.SafeString(JSON.stringify(obj));
+}
 
 
 

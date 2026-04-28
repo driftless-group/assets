@@ -22,6 +22,7 @@ gulp.task('scripts', function() {
     './dependencies/jquery.js',
     './dependencies/socket.io.js',
     './dependencies/underscore.js',
+    './dependencies/api.js',
     './dependencies/backbone.js',
     './dependencies/bootstrap.js',
     './dependencies/openpgp.js',

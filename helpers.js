@@ -15,7 +15,7 @@ helpers.t = function(name, data={}, options={}) {
   //console.log(this.translations);
   //console.log(this.locale);
   
-  string = this.translations[name]
+  string = this.translations[this.locale];
 
   return string;
 }

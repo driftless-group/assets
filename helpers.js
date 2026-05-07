@@ -12,10 +12,13 @@ if (helpers == undefined) {
 helpers.t = function(name, data={}, options={}) {
   var string = '';
   
-  //console.log(this.translations);
-  //console.log(this.locale);
-  
-  string = this.translations[name];
+  if (this.translations[name] != undefined) {
+    string = this.translations[name];
+  } else if (options.default != undefined) {
+    string = options.default
+  } else {
+    string = name;
+  }
 
   return string;
 }

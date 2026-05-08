@@ -109,7 +109,6 @@ helpers.json = function(obj) {
 
 
 helpers.hasRole = function(requiredRole, options) {
-  console.log(options);
   if (options.data.root.auth != undefined && 
       options.data.root.auth.roles.indexOf(requiredRole) > -1) {
     

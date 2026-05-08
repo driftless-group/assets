@@ -12,17 +12,17 @@ if (helpers == undefined) {
 // i think it might need to render handlebars etc.
 //
 // trying to allow a default if a translation doesnt exist
-helpers.t = function(name, default=undefined, options={}) {
+helpers.t = function(name, optionalDefault=undefined, options={}) {
   var string = '';
  
-  if (typeof default == 'object' && default.name == 't') { 
-    options = default;
+  if (typeof optionalDefault == 'object' && optionalDefault.name == 't') { 
+    options = optionalDefault;
   }
 
   if (options.data.root.translations[name] != undefined) {
     string = options.data.root.translations[name];
-  } else if (default != undefined) {
-    string = default;
+  } else if (optionalDefault != undefined) {
+    string = optionalDefault;
   } else {
     string = name;
   }

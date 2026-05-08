@@ -108,6 +108,14 @@ helpers.json = function(obj) {
 }
 
 
+helpers.hasRole = function(requiredRole, userRoles=[], options) {
+  if (userRoles.indexOf(requiredRole) > -1) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+};
+
 
 if (typeof module != 'undefined') {
   module.exports = helpers;

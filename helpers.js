@@ -119,9 +119,10 @@ helpers.hasRole = function(requiredRole, options) {
   }     
 };
 
-helpers.hostname = function(name) {
-  return new Handlebars.SafeString(this.urls.proto + "://" + this.urls[name]);
+helpers.hostname = function(name, options) {
+  return new Handlebars.SafeString(options.data.root.urls.proto + "://" + options.data.root.urls[name]);
 }
+
 
 
 if (typeof module != 'undefined') {

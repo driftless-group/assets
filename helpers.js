@@ -8,14 +8,21 @@ if (helpers == undefined) {
   var helpers = {};
 }
 
-// this is just an initial stab at it.  i think it might need to render handlebars etc.
-helpers.t = function(name, data={}, options={}) {
+// this is just an initial stab at it.  
+// i think it might need to render handlebars etc.
+//
+// trying to allow a default if a translation doesnt exist
+helpers.t = function(name, default=undefined, options={}) {
   var string = '';
-  
-  if (this.translations[name] != undefined) {
-    string = this.translations[name];
-  } else if (options.default != undefined) {
-    string = options.default
+ 
+  if (typeof default == 'object' && default.name == 't') { 
+    options = default;
+  }
+
+  if (options.data.root.translations[name] != undefined) {
+    string = options.data.root.translations[name];
+  } else if (default != undefined) {
+    string = default;
   } else {
     string = name;
   }

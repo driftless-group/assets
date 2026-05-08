@@ -109,14 +109,16 @@ helpers.json = function(obj) {
 
 
 helpers.hasRole = function(requiredRole, options) {
+  console.log(options);
   if (options.data.root.auth != undefined && 
       options.data.root.auth.roles.indexOf(requiredRole) > -1) {
     
     return options.fn(this);
-  } else { 
+  } else if (options.inverse && options.inverse !== Handlebars.Utils.noop) { 
     return options.inverse(this);
   }     
 };
+
 
 
 if (typeof module != 'undefined') {

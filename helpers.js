@@ -108,12 +108,14 @@ helpers.json = function(obj) {
 }
 
 
-helpers.hasRole = function(requiredRole, userRoles=[], options) {
-  if (userRoles.indexOf(requiredRole) > -1) {
+helpers.hasRole = function(requiredRole, options) {
+  if (options.data.root.auth != undefined && 
+      options.data.root.auth.roles.indexOf(requiredRole) > -1) {
+    
     return options.fn(this);
-  } else {
+  } else { 
     return options.inverse(this);
-  }
+  }     
 };
 
 

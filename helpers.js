@@ -119,6 +119,9 @@ helpers.hasRole = function(requiredRole, options) {
   }     
 };
 
+helpers.hostname = function(name) {
+  return new Handlebars.SafeString(this.urls.proto + "://" + this.urls[name]);
+}
 
 
 if (typeof module != 'undefined') {

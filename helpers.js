@@ -116,6 +116,16 @@ helpers.json = function(obj) {
 }
 
 
+helpers.roleButton = function(roles, name) {
+  var hasRole = roles.indexOf(name) > -1;
+  var cls = (hasRole ? 'primary' : 'outline-primary role-apply');
+  var html = ['<button type="button" class="btn btn-', cls, '">', name, '</button>'].join('') 
+  
+  return new Handlebars.SafeString(html);
+}
+
+
+
 helpers.hasRole = function(requiredRole, options) {
   if (options.data.root.auth != undefined && 
       options.data.root.auth.roles.indexOf(requiredRole) > -1) {
@@ -125,6 +135,8 @@ helpers.hasRole = function(requiredRole, options) {
     return options.inverse(this);
   }     
 };
+
+
 
 helpers.hostname = function(name, options) {
   return new Handlebars.SafeString(options.data.root.urls.proto + "://" + options.data.root.urls[name]);

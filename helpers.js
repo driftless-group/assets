@@ -17,6 +17,7 @@ helpers.t = function(name, optionalDefault=undefined, options={}) {
  
   if (typeof optionalDefault == 'object' && optionalDefault.name == 't') { 
     options = optionalDefault;
+    optionalDefault = undefined;
   }
 
   if (options.data.root.translations[name] != undefined) {

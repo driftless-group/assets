@@ -2,20 +2,32 @@
 if (typeof process === 'object') {
   var path = require('path');
   var Handlebars = require('handlebars');
+  var marked = require('marked');
 }
 
 if (helpers == undefined) { 
   var helpers = {};
 }
 
-// this is just an initial stab at it.  i think it might need to render handlebars etc.
-helpers.t = function(name, data={}, options={}) {
+// this is just an initial stab at it.  
+// i think it might need to render handlebars etc.
+//
+// trying to allow a default if a translation doesnt exist
+helpers.t = function(name, optionalDefault=undefined, options={}) {
   var string = '';
-  
-  //console.log(this.translations);
-  //console.log(this.locale);
-  
-  string = this.translations[name]
+ 
+  if (typeof optionalDefault == 'object' && optionalDefault.name == 't') { 
+    options = optionalDefault;
+    optionalDefault = undefined;
+  }
+
+  if (options.data.root.translations[name] != undefined) {
+    string = options.data.root.translations[name];
+  } else if (optionalDefault != undefined) {
+    string = optionalDefault;
+  } else {
+    string = name;
+  }
 
   return string;
 }
@@ -102,6 +114,36 @@ helpers.html = function() {
 
 helpers.json = function(obj) {
   return new Handlebars.SafeString(JSON.stringify(obj));
+}
+
+
+helpers.roleButton = function(roles, name) {
+  var hasRole = roles.indexOf(name) > -1;
+  var cls = (hasRole ? 'primary' : 'outline-primary role-apply');
+  var html = ['<button type="button" class="btn btn-', cls, '">', name, '</button>'].join('') 
+  
+  return new Handlebars.SafeString(html);
+}
+
+helpers.markdown = function(text, options) {
+  return new Handlebars.SafeString(marked.parse(text));
+}
+
+
+helpers.hasRole = function(requiredRole, options) {
+  if (options.data.root.auth != undefined && 
+      options.data.root.auth.roles.indexOf(requiredRole) > -1) {
+    
+    return options.fn(this);
+  } else if (options.inverse && options.inverse !== Handlebars.Utils.noop) { 
+    return options.inverse(this);
+  }     
+};
+
+
+
+helpers.hostname = function(name, options) {
+  return new Handlebars.SafeString(options.data.root.urls.proto + "://" + options.data.root.urls[name]);
 }
 
 

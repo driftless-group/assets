@@ -18,6 +18,7 @@ gulp.task('mocha', function() {
 
 gulp.task('scripts', function() {
   return gulp.src([
+    './dependencies/marked.js',
     './dependencies/handlebars.js',
     './dependencies/jquery.js',
     './dependencies/socket.io.js',

@@ -2,6 +2,7 @@
 if (typeof process === 'object') {
   var path = require('path');
   var Handlebars = require('handlebars');
+  var marked = require('marked');
 }
 
 if (helpers == undefined) { 
@@ -124,6 +125,9 @@ helpers.roleButton = function(roles, name) {
   return new Handlebars.SafeString(html);
 }
 
+helpers.markdown = function(text, options) {
+  return new Handlebars.SafeString(marked.parse(text));
+}
 
 
 helpers.hasRole = function(requiredRole, options) {

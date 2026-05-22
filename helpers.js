@@ -2,7 +2,7 @@
 if (typeof process === 'object') {
   var path = require('path');
   var Handlebars = require('handlebars');
-  var marked = require('marked');
+  const { marked } = require('marked');
 }
 
 if (helpers == undefined) { 

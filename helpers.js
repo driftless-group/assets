@@ -147,6 +147,33 @@ helpers.hostname = function(name, options) {
 }
 
 
+helpers.objectDir = function(obj, options) {
+  if (['ar', 'fa', 'ug'].indexOf(obj.locale) > -1) {
+    return "rtl";
+  } else {
+    return 'ltr';
+  }
+}
+
+
+helpers.setLocale = function(locale, options) {
+  var augmented = [options.data.root.currentUrl];
+  
+  if (options.data.root.currentUrl.indexOf('?') > -1) {
+    augmented.push("&");
+  } else {
+    augmented.push("?");
+  }
+  
+  augmented.push('setLocale='+locale);
+
+  return augmented.join('');
+}
+
+helpers.capitalize = function(str, options) {
+  if (!str) return str; // Handle empty strings
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 if (typeof module != 'undefined') {
   module.exports = helpers;

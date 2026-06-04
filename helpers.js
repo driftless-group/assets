@@ -175,6 +175,41 @@ helpers.capitalize = function(str, options) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+
+helpers.header = function(name, options={}) {
+  var html = `<div class="d-flex justify-content-between align-items-center">
+    <h3>{{t plural title}}</h3>
+    {{#if new}}
+    <a href='{{prefix}}/new' class="btn btn-secondary">{{t new_section alt_button}}</a>
+    {{/if}}
+  </div>`
+
+  if (options.data.root.header == undefined) {
+    options.data.root.header = {};
+  }
+
+  var data = {
+    section: name,
+    new: true,
+    translations: options.data.root.translations,
+    plural: helpers.pluralize(2, name),
+    title: helpers.capitalize(helpers.pluralize(2, name)),
+    new_section: "new_"+name,
+    alt_button: "New "+helpers.capitalize(name)
+  }
+
+  Object.assign(data, options.data.root.header);
+
+  if (data.prefix == undefined) {
+    data.prefix = ['/',data.plural].join('')
+  }
+
+  var template = Handlebars.compile(html)
+  return new Handlebars.SafeString(template(data));
+}
+
+
+
 if (typeof module != 'undefined') {
   module.exports = helpers;
 }

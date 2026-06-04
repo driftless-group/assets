@@ -18,7 +18,7 @@
     "test": "mocha -w"
   },
   "dependencies": {
-    "@drifted/pluralize": "^0.0.5",
+    "@drifted/pluralize": "latest",
     "carrier-pigeon": "^0.1.11",
     "marked": "^18.0.4",
     "qrcode": "^1.5.4"

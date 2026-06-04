@@ -3,10 +3,30 @@ if (typeof process === 'object') {
   var path = require('path');
   var Handlebars = require('handlebars');
   const { marked } = require('marked');
+  var pluralize = require('@drifted/pluralize');
 }
 
 if (helpers == undefined) { 
   var helpers = {};
+  
+  var irregulars = {
+    person: 'people',
+    woman: 'women'
+  }
+
+  if (pluralize != undefined) {
+    helpers.pluralize = pluralize;
+  } else {
+    helpers.pluralize = function pluralize(count, noun) {
+      if (count == 1) {
+        return noun;
+      } else {
+        return (irregulars[noun] || noun + "s");
+      }
+    }
+  }
+
+
 }
 
 // this is just an initial stab at it.  
@@ -174,7 +194,6 @@ helpers.capitalize = function(str, options) {
   if (!str) return str; // Handle empty strings
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
 
 helpers.header = function(name, options={}) {
   var html = `<div class="d-flex justify-content-between align-items-center">

@@ -17,7 +17,7 @@ if (helpers == undefined) {
   if (pluralize != undefined) {
     helpers.pluralize = pluralize;
   } else {
-    helpers.pluralize = function pluralize(count, noun) {
+    helpers.pluralize = function pluralize(noun, count) {
       if (count == 1) {
         return noun;
       } else {
@@ -212,7 +212,7 @@ helpers.header = function(name, options={}) {
     new: true,
     translations: options.data.root.translations,
     plural: helpers.pluralize(2, name),
-    title: helpers.capitalize(helpers.pluralize(2, name)),
+    title: helpers.capitalize(helpers.pluralize(name, 2)),
     new_section: "new_"+name,
     alt_button: "New "+helpers.capitalize(name)
   }

@@ -1,3 +1,7 @@
 .top {
   margin-top: 10px; 
 }
+
+.pagination .active a {
+  background-color: #198754 !important;
+}

@@ -65698,8 +65698,8 @@ helpers.header = function(name, options={}) {
     {{/if}}
   </div>`
 
-  if (options.data.root.header == undefined) {
-    options.data.root.header = {};
+  if (options.data.root.headerOptions == undefined) {
+    options.data.root.headerOptions = {};
   }
 
   var data = {
@@ -65712,7 +65712,7 @@ helpers.header = function(name, options={}) {
     alt_button: "New "+helpers.capitalize(name)
   }
 
-  Object.assign(data, options.data.root.header);
+  Object.assign(data, options.data.root.headerOptions);
 
   if (data.prefix == undefined) {
     data.prefix = ['/',data.plural].join('')

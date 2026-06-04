@@ -9,25 +9,26 @@ if (typeof process === 'object') {
 if (helpers == undefined) { 
   var helpers = {};
   
+}
+
+
+if (pluralize != undefined) {
+  helpers.pluralize = pluralize;
+} else {
   var irregulars = {
     person: 'people',
     woman: 'women'
   }
 
-  if (pluralize != undefined) {
-    helpers.pluralize = pluralize;
-  } else {
-    helpers.pluralize = function pluralize(noun, count) {
-      if (count == 1) {
-        return noun;
-      } else {
-        return (irregulars[noun] || noun + "s");
-      }
+  helpers.pluralize = function pluralize(noun, count) {
+    if (count == 1) {
+      return noun;
+    } else {
+      return (irregulars[noun] || noun + "s");
     }
   }
-
-
 }
+
 
 // this is just an initial stab at it.  
 // i think it might need to render handlebars etc.

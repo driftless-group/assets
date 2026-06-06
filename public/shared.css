@@ -4,6 +4,7 @@
 
 .pagination .active a {
   background-color: #198754 !important;
+  color: #ffffff;
 }
 
 .pagination .page-item a.page-link {
@@ -12,6 +13,7 @@
 
 
 .pagination a {
-  background-color: #198754 !important;
+  color: #198754 !important;
 }
 
+   
